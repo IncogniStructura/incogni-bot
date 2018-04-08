@@ -13,12 +13,12 @@ var banks = {
   yespositive: ["~ Whew.", "~ That's nice to know.", "~ Good.", "~ Welp.", "~ Well."]
 };
 var $i = {
-	getbank: function (id) {
+	getbank: function (ide) {
 	  var localrandom = Math.floor(Math.random() * id.length)
-	  if (id === "start" && localrandom === 6) {
+	  if (id === start && localrandom === 6) {
 	    banks.startconvomode = 6;
 	  }
-	  return banks.id[localrandom];
+	  return banks.ide[localrandom];
 	}
 };
 
