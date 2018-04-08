@@ -1,7 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var settings = {
-	muted: false
+  muted: false
+};
+var assets = {
+  recentmessage: "",
+  processed: ""
 };
 
 client.on('ready', () => {
@@ -9,7 +13,9 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
+  assets.recentmessage = msg.content;
+  assets.processed = assets.recentmessage.toLowerCase();
+  if (assets.processed.indexOf("ping") != -1) {
     msg.reply('Pong!');
   }
 });
