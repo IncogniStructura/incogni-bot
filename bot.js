@@ -23,7 +23,7 @@ client.on('message', msg => {
 
 
   if (assets.processed.indexOf("ping") != -1) {
-    client.sendMessage(msg.channel, msg.author.username + ', pong!');
+    client.sendMessage(message.channel, msg.author.username + ', pong!');
   }
 });
 
