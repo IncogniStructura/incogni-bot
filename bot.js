@@ -19,7 +19,11 @@ client.on('message', msg => {
 
 
   if (assets.processed.indexOf("ping") != -1) {
-    msg.reply("Pong!");
+    if (assets.processed.indexOf("ping pong") != -1) {
+      msg.reply("I can't play Ping Pong!");
+    } else {
+      msg.reply("Pong Check!");
+    }
   }
 });
 
