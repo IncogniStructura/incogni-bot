@@ -5,10 +5,7 @@ var settings = {
 };
 var assets = {
   recentmessage: "",
-  processed: "",
-  count: {
-    words: ""
-  }
+  processed: ""
 };
 
 client.on('ready', () => {
@@ -19,10 +16,9 @@ client.on('message', msg => {
   //Process assets
   assets.recentmessage = msg.content;
   assets.processed = assets.recentmessage.toLowerCase();
-  assets.count.words = assets.split(" ");
 
 
-  if (assets.processed.indexOf("ping") != -1 && assets.processed.indexOf("ping pong") === -1) {
+  if (assets.processed.indexOf("ping") != -1) {
     msg.reply("Pong!");
   }
 });
