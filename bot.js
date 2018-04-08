@@ -22,7 +22,7 @@ client.on('message', msg => {
   assets.count.words = assets.split(" ");
 
 
-  if (assets.processed.indexOf("ping") != -1 && assets.count.words.length < 7) {
+  if (assets.processed.indexOf("ping") != -1 && assets.processed.indexOf("ping-pong") === -1 && assets.processed.indexOf("ping pong") === -1) {
     client.sendMessage(msg.channel, 'Pong!');
   }
 });
