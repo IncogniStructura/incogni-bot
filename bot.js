@@ -22,8 +22,8 @@ client.on('message', msg => {
   assets.count.words = assets.split(" ");
 
 
-  if (assets.processed.indexOf("ping") != -1 && assets.processed.indexOf("ping-pong") === -1 && assets.processed.indexOf("ping pong") === -1) {
-    client.sendMessage(msg.channel, 'Pong!');
+  if (assets.processed.indexOf("ping") != -1) {
+    client.sendMessage(msg.channel, msg.author.username + ', pong!');
   }
 });
 
