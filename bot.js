@@ -5,7 +5,10 @@ var settings = {
 };
 var assets = {
   recentmessage: "",
-  processed: ""
+  processed: "",
+  count: {
+    words: ""
+  }
 };
 
 client.on('ready', () => {
@@ -13,10 +16,14 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+  //Process assets
   assets.recentmessage = msg.content;
   assets.processed = assets.recentmessage.toLowerCase();
-  if (assets.processed.indexOf("ping") != -1) {
-    msg.reply('Pong!');
+  assets.count.words = assets.split(" ");
+
+
+  if (assets.processed.indexOf("ping") != -1 && assets.count.words.length < 7) {
+    client.sendMessage(msg.channel, 'Pong!');
   }
 });
 
