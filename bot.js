@@ -14,7 +14,7 @@ var banks = {
 };
 var $i = {
 	getbank: function (ide) {
-	  var localrandom = Math.floor(Math.random() * id.length)
+	  var localrandom = Math.floor(Math.random() * id.length);
 	  if (id === start && localrandom === 6) {
 	    banks.startconvomode = 6;
 	  }
@@ -49,12 +49,15 @@ client.on('message', msg => {
 	  }
   //Start
   	  if (assets.processed.indexOf("you") != -1 && assets.processed.indexOf("there") != -1) {
-  	    msg.reply($i.getbank(start));
+  	    var localrandom = Math.floor(Math.random() * banks.start.length);
+  	    msg.reply(banks.start[localrandom]);
+  	    banks.startconvomode = localrandom;
   	  }
   //Yes requests
   	  if (assets.processed.indexOf("sure") != -1 || assets.processed.indexOf("yes") != -1 || assets.processed.indexOf("ye") != -1 || assets.processed.indexOf("ja") != -1) { 
   	    if (banks.startconvomode === 6) {
-  	      msg.reply("~ Ah, good.");
+  	      var localrandom = Math.floor(Math.random() * banks.yespositive.length);
+  	      msg.reply(banks.yespositive[localrandom]);
   	      banks.startconvomode = 0;
   	    }
   	  }
