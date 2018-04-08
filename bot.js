@@ -5,29 +5,40 @@ var settings = {
 };
 var assets = {
   recentmessage: "",
-  processed: ""
+  processed: "",
+  wordbankstop: []
 };
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', msg => {
+client.on('message', function(message) {
   //Process assets
   assets.recentmessage = msg.content;
   assets.processed = assets.recentmessage.toLowerCase();
 
-  if (message.author != "IncogniBot") {
+  if (assets.processed.indexOf("~") === -1) {
   if (assets.processed.indexOf("ping") != -1) {
     if (assets.processed.indexOf("ping pong") != -1) {
-      msg.reply("I can't play Ping Pong!");
+      client.sendMessage(message.channel,"~ I can't play that game.");
     } else {
-      msg.reply("Pong Check!");
+      client.sendMessage(message.channel,"~ Pong Check!");
     }
   }
-  if (assets.processed.indexOf("stop") != -1) {
-    msg.reply("Are you adressing me?");
-  }
+  //Stop
+	  if (assets.processed.indexOf("stop") != -1) {
+	    if (assets.processed.indexOf("stop now") != -1) {
+	      client.sendMessage(message.channel,"Alright, stopping now.");
+            } else {
+	      client.sendMessage(message.channel,"Are you adressing me?");
+	    }
+	  }
+  //Start
+  	  if (assets.processed.indexOf("you") != -1 && assets.processed.indexOf("there") != -1) {
+  	    client.sendMessage(message.channel,"Yeah, I'm here.");
+  	  }
+	  
   }
 });
 
